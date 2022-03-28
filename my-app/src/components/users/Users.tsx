@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styles from "./users.module.scss"
+import User from "./User/User"
 
 interface TitleProps {
   title?: string;
@@ -8,7 +9,17 @@ interface TitleProps {
 const Users: FC<TitleProps> = ({ title}) => {
   return (
     <div className={styles.users}>
-      
+      <h1>Cписок пользователей</h1>
+      <User />
+      <User />
+      <User />
+      <User />
+      <User />
+      <User />
+      <User />
+      <User />
+      <User />
+      <User/>
     </div>
   );
 };

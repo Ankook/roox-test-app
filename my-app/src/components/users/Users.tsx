@@ -19,7 +19,8 @@ const Users: FC<TitleProps> = ({ title}) => {
       <User />
       <User />
       <User />
-      <User/>
+      <User />
+      <div className={styles.usersCount}>Найдено 10 пользователей</div>
     </div>
   );
 };

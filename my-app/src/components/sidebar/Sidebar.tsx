@@ -11,7 +11,7 @@ interface TitleProps {
 const Sidebar: FC<TitleProps> = ({ title}) => {
   return (
     <div className={styles.sidebar}>
-      <span>Cортировка</span>
+      <span className={styles.sortTitle}>Cортировка</span>
       <Button text="по городу" theme={Themes.eggPlant} />
       <Button text="по компании" theme={Themes.eggPlant} />
     </div>

@@ -4,12 +4,12 @@ import './App.scss';
 import Sidebar from './components/sidebar/Sidebar';
 import Users from "./components/Users/Users";
 import Profile from "./components/Profile/Profile";
+import { Input } from './components/Ui-kit/Input/Input';
 
 function App() {
   return (
     <div className="App">
-      <Sidebar />
-      <Profile />
+      <Input placeholder="Иван Иванов" />
     </div>
   );
 }

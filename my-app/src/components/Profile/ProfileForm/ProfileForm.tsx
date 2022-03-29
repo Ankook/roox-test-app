@@ -7,7 +7,7 @@ interface ProfileProps {
 const ProfileForm: FC<ProfileProps> = ({ }) => {
   return (
     <div className={styles.profileForm}>
-        
+        aboba
     </div>
   );
 };

@@ -2,24 +2,17 @@ import React, { FocusEventHandler } from "react";
 import styles from "./input.module.scss";
 import cx from "classnames";
 
-{/*interface Props {
+interface Props {
   placeholder?: string;
-  name?: string;
-  id?: string;
-  value?: string;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
-  width?: string;
-  inputType?: string;
+  
 }
-*/}
-const Input  = ({
+
+const Input:React.FC<Props>  = ({
   placeholder
 }) => {
   return (
-    <div>
-      <input className={styles.input} placeholder={placeholder}/>
+    <div className={styles.input}>
+      <input  placeholder={placeholder}/>
     </div>
   );
 };

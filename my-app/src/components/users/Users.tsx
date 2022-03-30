@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import styles from "./users.module.scss"
 import User from "./User/User"
 
@@ -6,7 +6,21 @@ interface TitleProps {
   title?: string;
 }
 
-const Users: FC<TitleProps> = ({ title}) => {
+
+
+
+const Users: FC<TitleProps> = ({ title }) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+      .then((response) => response.json())
+      .then((actualData) => console.log(actualData));
+  }, []);
+  
+
   return (
     <div className={styles.users}>
       <h1>Cписок пользователей</h1>

@@ -1,4 +1,4 @@
-.App {
+.app {
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -6,9 +6,10 @@
   align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-wrapper-content  {
+  margin: 20px 35px;
+  box-sizing: border-box;
+  align-self: flex-start;
 }
 
 @media (prefers-reduced-motion: no-preference) {

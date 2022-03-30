@@ -18,9 +18,10 @@ function App() {
       <div className='app-wrapper-content'>
         <BrowserRouter>
         <Routes>
-          <Route path="/" element={<UsersContainer/>} />
-          <Route path="/users" element={<UsersContainer />} />
-          <Route path="/profile" element={<Profile/>} />
+            <Route path="/" element={<UsersContainer/>} />
+            <Route path="/users" element={<UsersContainer />} />
+            <Route path="/users/:id" element={<Profile />} />
+            
         </Routes>
       </BrowserRouter>
       </div>

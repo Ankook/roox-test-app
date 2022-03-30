@@ -1,0 +1,16 @@
+.profile  {
+  align-self: flex-start;
+  background: yellow;
+  width: 515px;
+}
+
+.profilePanel  {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .title  {
+    font-weight: 700;
+    font-size: 14px;
+  }
+}

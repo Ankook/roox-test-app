@@ -1,20 +1,22 @@
-import React, { FocusEventHandler } from "react";
+import React from "react";
 import styles from "./input.module.scss";
-import cx from "classnames";
 
-interface Props {
-  placeholder?: string;
-  
+interface InputProps {
+  placeholder: string;
+  label: string;
 }
 
-const Input:React.FC<Props>  = ({
-  placeholder
+const Input:React.FC<InputProps>  = ({
+  placeholder, label
 }) => {
   return (
-    <div className={styles.input}>
-      <input  placeholder={placeholder}/>
+    <div className={styles.componentContainer}>
+      <div className={styles.fakeLabel}>{label}</div>
+      <div className={styles.inputContainer}>
+        <input type="text" name="name" placeholder={placeholder}/>
+      </div>
     </div>
   );
 };
 
-export { Input };
+export default Input;

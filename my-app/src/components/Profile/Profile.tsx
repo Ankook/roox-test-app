@@ -11,7 +11,7 @@ const Profile: FC<ProfileProps> = ({ }) => {
   return (
     <div className={styles.profile}>
       <div className={styles.profilePanel}>
-        <h1>Профиль пользователя</h1>
+        <h1 className={styles.title}>Профиль пользователя</h1>
         <Button text='Редактировать' theme={Themes.eggPlant} />
       </div>
       <ProfileForm/>

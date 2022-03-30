@@ -1,0 +1,30 @@
+.componentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.fakeLabel  {
+  font-weight: 400;
+  font-size: 8px;
+  margin-bottom: 3px;
+}
+
+.textareaContainer  {
+  height: 55px;
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #D8D8D8;
+  box-shadow: none;
+  width: 420px;
+  box-sizing: border-box;
+
+  textarea {
+    resize: none;
+    border: none;
+    margin: 5px 10px;
+    font-size: 10px;
+    width: 100%;
+  }
+}

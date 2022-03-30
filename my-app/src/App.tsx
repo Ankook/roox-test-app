@@ -7,7 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import Sidebar from './components/sidebar/Sidebar';
-import Users from "./components/Users/Users";
+import UsersContainer from "./components/UsersContainer/UsersContainer";
 import Profile from "./components/Profile/Profile";
 
 
@@ -18,8 +18,8 @@ function App() {
       <div className='app-wrapper-content'>
         <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Users/>} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/" element={<UsersContainer/>} />
+          <Route path="/users" element={<UsersContainer />} />
           <Route path="/profile" element={<Profile/>} />
         </Routes>
       </BrowserRouter>

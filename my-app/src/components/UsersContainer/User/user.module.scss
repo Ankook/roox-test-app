@@ -40,6 +40,10 @@
 .more {
   display: flex;
   align-items: flex-end;
-  color: #4B51EF;
   font-size: 12px;
+  
+  .navLink  {
+    text-decoration: none;
+    color: #4B51EF;
+  }
 }

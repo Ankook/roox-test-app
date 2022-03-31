@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
 import { types } from 'sass';
-import styles from "./user.module.scss"
+import styles from "./user.module.scss";
+import { NavLink } from "react-router-dom";
 
 interface UserProps {
   name: string,
   username: string,
   company: string,
-  city: string
+  city: string,
+  id: number
 }
 
-const User: FC<UserProps> = ({ name,username, city, company }) => {
+const User: FC<UserProps> = ({ name, username, city, company, id }) => {
   return (
     <div className={styles.user}>
       <div className={styles.userContent}>
@@ -28,7 +30,7 @@ const User: FC<UserProps> = ({ name,username, city, company }) => {
           </div>
         </div> 
         <span className={styles.more}>
-          Подробнее
+        <NavLink className={styles.navLink} to={"/users/" + id}>Подробнее</NavLink>
         </span>
       </div>
     </div>

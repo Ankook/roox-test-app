@@ -1,6 +1,6 @@
 import React, {  useState, useEffect } from 'react';
 import styles from "./usersContainer.module.scss"
-import User from "./User/User"
+import Users from "./Users";
 
 
 const MovieContainer = () => {
@@ -41,10 +41,13 @@ const MovieContainer = () => {
         <div>{`There is a problem fetching the post data - ${error}`}</div>
       )}
       <div className={styles.users}>
-        {data &&
+        <Users data={data}/>
+        
+        {/*{data &&
           data.map(user => (
-            <User key={user.id} name={user.name} username={user.username} city={user.address.city} company={user.company.name}/>
+            <User key={user.id} id={user.id} name={user.name} username={user.username} city={user.address.city} company={user.company.name}/>
           ))}
+          */}
       </div>
       <div сlassName={styles.usersCount}> Найдено {usersCount} пользователей</div>
     </div>

@@ -4,17 +4,19 @@ import Input from "../../Ui-kit/Input/Input";
 import Textarea from "../../Ui-kit/Textarea/Textarea";
 import { Button } from '../../Ui-kit/button/Button';
 import { Themes } from "../../Ui-kit/types";
-interface ProfileProps {
-  aboba?: string;
-}
 
-const ProfileForm: FC<ProfileProps> = ({ }) => {
+
+
+
+const ProfileForm = ({ name, username, email }) => {
+
+  
   return (
     <div className={styles.profileForm}>
       <div className={styles.fillArea}>
-        <Input label='Name' placeholder='Иван Иванов' />
-        <Input label='User name' placeholder='Ivan' />
-        <Input label ="E-mail" placeholder='example@mail.com' />
+        <Input label='Name' placeholder='Иван Иванов' initialValue={name}/>
+        <Input  label='User name' placeholder={username} />
+        <Input label ="E-mail" placeholder={email} />
         <Input label ="Street" placeholder='ул. Пример' />
         <Input label="City" placeholder="Москва" />
         <Input label="Zip code" placeholder='1234234' />

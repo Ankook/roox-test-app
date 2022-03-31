@@ -38,7 +38,7 @@ const ProfileContainer = () => {
 
   
   return (
-    <Profile name={data.name} />
+    <Profile data={data}/>
   );
 };
 export default ProfileContainer;

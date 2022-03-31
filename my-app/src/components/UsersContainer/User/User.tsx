@@ -18,7 +18,7 @@ const User: FC<UserProps> = ({ name,  city, company, id }) => {
         <div className={styles.userData}>
           <div className={styles.name}>
             <span className={styles.title}>ФИО:</span>
-            <span className={styles.value}>{name}span>
+            <span className={styles.value}>{name}</span>
           </div>
           <div className={styles.city}>
             <span className={styles.title}>город:</span>

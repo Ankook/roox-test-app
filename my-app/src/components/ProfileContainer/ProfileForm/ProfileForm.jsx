@@ -12,9 +12,12 @@ const ProfileForm = ({ data }) => {
   console.log("Пропсы компоненты ProfileForm");
   console.log(data);
   return (
+    
     <div className={styles.profileForm}>
+      {data && (
+        <>
       <div className={styles.fillArea}>
-        <Input label='Name' placeholder={"abobus"} />
+        <Input label='Name' placeholder={data.name} />
         <Input label='Username' placeholder={data} />
         <Input label ="E-mail"  placeholder='abobus' />
         <Input label="Street"/>
@@ -26,7 +29,9 @@ const ProfileForm = ({ data }) => {
       </div>
       <div className={styles.submitArea}>
         <Button text='Отправить' theme={Themes.grey} />
-      </div>
+          </div>
+      </>
+      )}
     </div>
   );
 };

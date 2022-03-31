@@ -5,7 +5,6 @@ import Profile from './Profile';
 
 
 const ProfileContainer = () => {
-  debugger;
   const { id } = useParams();
   console.log(id);
   const [data, setData] = useState(null);
@@ -13,7 +12,7 @@ const ProfileContainer = () => {
   const [error, setError] = useState(null);
   const [usersCount, setUsersCount] = useState(0);
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/1`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(
@@ -37,7 +36,7 @@ const ProfileContainer = () => {
         console.log("Данные конкретного пользователя 2");
         console.log(data);
       });
-  }, []);
+  }, [id]);
 
   
   return (

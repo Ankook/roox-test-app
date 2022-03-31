@@ -5,14 +5,16 @@ import { Themes } from "../Ui-kit/types";
 import ProfileForm from "./ProfileForm/ProfileForm";
 
 
-const Profile  = ({data}) => {
+const Profile = ({ data }) => {
+  console.log("Пропсы комопненты Profile");
+  console.log(data);
   return (
     <div className={styles.profile}>
       <div className={styles.profilePanel}>
         <h1 className={styles.title}>Профиль пользователя</h1>
         <Button text='Редактировать' theme={Themes.eggPlant} />
       </div>
-      <ProfileForm name={data.name} username={data.username}/>
+      <ProfileForm data={data}/>
     </div>
   );
 };

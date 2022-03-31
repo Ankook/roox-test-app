@@ -42,12 +42,6 @@ const MovieContainer = () => {
       )}
       <div className={styles.users}>
         <Users data={data}/>
-        
-        {/*{data &&
-          data.map(user => (
-            <User key={user.id} id={user.id} name={user.name} username={user.username} city={user.address.city} company={user.company.name}/>
-          ))}
-          */}
       </div>
       <div сlassName={styles.usersCount}> Найдено {usersCount} пользователей</div>
     </div>

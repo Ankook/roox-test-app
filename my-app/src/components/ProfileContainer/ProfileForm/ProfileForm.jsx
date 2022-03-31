@@ -8,21 +8,21 @@ import { Themes } from "../../Ui-kit/types";
 
 
 
-const ProfileForm = ({ name, username, email }) => {
-
-  
+const ProfileForm = ({ data }) => {
+  console.log("Пропсы компоненты ProfileForm");
+  console.log(data);
   return (
     <div className={styles.profileForm}>
       <div className={styles.fillArea}>
-        <Input label='Name' placeholder='Иван Иванов' initialValue={name}/>
-        <Input  label='User name' placeholder={username} />
-        <Input label ="E-mail" placeholder={email} />
-        <Input label ="Street" placeholder='ул. Пример' />
-        <Input label="City" placeholder="Москва" />
-        <Input label="Zip code" placeholder='1234234' />
-        <Input label="Phone" placeholder='89991112233' />
-        <Input label='Website' placeholder='www.example.com' />
-        <Textarea label='Comment' placeholder='abobus' />
+        <Input label='Name' placeholder={"abobus"} />
+        <Input label='Username' placeholder={data} />
+        <Input label ="E-mail"  placeholder='abobus' />
+        <Input label="Street"/>
+        <Input label="City" />
+        <Input label="Zip code" />
+        <Input label="Phone" />
+        <Input label='Website' />
+        <Textarea label='Comment'/>
       </div>
       <div className={styles.submitArea}>
         <Button text='Отправить' theme={Themes.grey} />

@@ -5,7 +5,7 @@ const Users = ({ data }) => {
   return (
     data &&
           data.map(user => (
-            <User key={user.id} id={user.id} name={user.name} username={user.username} city={user.address.city} company={user.company.name}/>
+            <User key={user.id} id={user.id} name={user.name} city={user.address.city} company={user.company.name}/>
           ))
           
   )

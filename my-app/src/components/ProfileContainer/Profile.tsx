@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Button } from '../Ui-kit/button/Button';
 import styles from "./profile.module.scss"
 import { Themes } from "../Ui-kit/types";
-import  ProfileForm  from "../Profile/ProfileForm/ProfileForm";
+import ProfileForm from "./ProfileForm/ProfileForm";
 interface ProfileProps {
   
 }

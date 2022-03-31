@@ -18,13 +18,13 @@ const ProfileForm = ({ data }) => {
         <>
       <div className={styles.fillArea}>
         <Input label='Name' placeholder={data.name} />
-        <Input label='Username' placeholder={data} />
-        <Input label ="E-mail"  placeholder='abobus' />
-        <Input label="Street"/>
-        <Input label="City" />
-        <Input label="Zip code" />
-        <Input label="Phone" />
-        <Input label='Website' />
+        <Input label='Username' placeholder={data.username} />
+        <Input label ="E-mail"  placeholder={data.email} />
+        <Input label="Street" placeholder={data.address.street}/>
+        <Input label="City" placeholder={data.address.city} />
+        <Input label="Zip code" placeholder={data.address.zipcode} />
+        <Input label="Phone" placeholder={data.phone} />
+        <Input label='Website' placeholder={data.website} />
         <Textarea label='Comment'/>
       </div>
       <div className={styles.submitArea}>

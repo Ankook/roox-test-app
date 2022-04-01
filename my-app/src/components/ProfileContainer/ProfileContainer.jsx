@@ -11,7 +11,6 @@ const ProfileContainer = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [usersCount, setUsersCount] = useState(0);
   
   useEffect(() => {
     usersAPI.getUser(id)
@@ -19,7 +18,6 @@ const ProfileContainer = () => {
         console.log("Данные конкретного пользователя");
         console.log(actualData);
         setData(actualData);
-        setUsersCount(actualData.length);
         setError(null);
       })
       .catch((err) => {
@@ -29,7 +27,6 @@ const ProfileContainer = () => {
         setLoading(false)
       });
   }, [id]);
-
 
   
   return (

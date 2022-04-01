@@ -1,6 +1,7 @@
 import React, {  useState, useEffect } from 'react';
 import styles from "./usersContainer.module.scss"
 import Users from "./Users";
+import { usersAPI } from '../../api/api';
 
 
 const MovieContainer = () => {
@@ -8,17 +9,12 @@ const MovieContainer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [usersCount, setUsersCount] = useState(0);
+  
+
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            `This is an HTTP error: The status is ${response.status}`
-          );
-        }
-        return response.json();
-      })
+    usersAPI.getUsers()
       .then((actualData) => {
+        console.log("Данные конкретного пользователя");
         console.log(actualData);
         setData(actualData);
         setUsersCount(actualData.length);
@@ -32,7 +28,6 @@ const MovieContainer = () => {
       });
   }, []);
 
-  
   return (
     <div className={styles.users}>
       <h1>Пользователи</h1>

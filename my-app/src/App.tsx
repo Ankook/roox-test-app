@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.scss';
 import {
@@ -12,16 +12,23 @@ import ProfileContainer from "./components/ProfileContainer/ProfileContainer";
 
 
 function App() {
+
+  const [sortType, setSortType] = useState(null);
+
+  function handleSortChange(newValue: any) {
+    setSortType(newValue);
+    console.log(newValue);
+  }
+
   return (
     <div className="app">
-      <Sidebar />
+      <Sidebar changeSortType={handleSortChange} />
       <div className='app-wrapper-content'>
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={<UsersContainer/>} />
-            <Route path="/users" element={<UsersContainer />} />
+            <Route path="/" element={<UsersContainer sortType={sortType} />} />
+            <Route path="/users" element={<UsersContainer sortType={sortType} />} />
             <Route path="/users/:id" element={<ProfileContainer />} />
-            
         </Routes>
       </BrowserRouter>
       </div>

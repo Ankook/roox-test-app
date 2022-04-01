@@ -3,8 +3,13 @@ import styles from "./usersContainer.module.scss"
 import Users from "./Users";
 import { usersAPI } from '../../api/api';
 
+interface UserContainerType  {
+  sortType: string | null,
+}
 
-const MovieContainer = () => {
+const UsersContainer: React.FC<UserContainerType> = (sortType) => {
+  console.log("Пропс sortType");
+  console.log(sortType);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,14 +18,14 @@ const MovieContainer = () => {
 
   useEffect(() => {
     usersAPI.getUsers()
-      .then((actualData) => {
+      .then((actualData: any) => {
         console.log("Данные конкретного пользователя");
         console.log(actualData);
         setData(actualData);
         setUsersCount(actualData.length);
         setError(null);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err.message);
       })
       .finally(() => {
@@ -38,8 +43,8 @@ const MovieContainer = () => {
       <div className={styles.users}>
         <Users data={data}/>
       </div>
-      <div сlassName={styles.usersCount}> Найдено {usersCount} пользователей</div>
+      <div className={styles.usersCount}> Найдено {usersCount} пользователей</div>
     </div>
   );
 };
-export default MovieContainer;
+export default UsersContainer;

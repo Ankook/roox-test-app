@@ -8,7 +8,7 @@ interface Props {
   text: string;
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClick?: (e?: any) => void;
+  onClick?: any;
   name?: string;
   disabled?: boolean;
 }
@@ -39,6 +39,7 @@ const Button: React.FC<Props> = ({
       className={cx(styles.customButton, getTheme(), className)}
       name={name}
       disabled={disabled}
+      onClick={onClick}
     >
       {text}
     </button>

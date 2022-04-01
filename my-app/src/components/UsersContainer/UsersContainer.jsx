@@ -3,11 +3,11 @@ import styles from "./usersContainer.module.scss"
 import Users from "./Users";
 import { usersAPI } from '../../api/api';
 
-interface UserContainerType  {
-  sortType: string | null,
-}
 
-const UsersContainer: React.FC<UserContainerType> = (sortType) => {
+
+
+
+const UsersContainer = ({ sortType }) => {
   console.log("Пропс sortType");
   console.log(sortType);
   const [data, setData] = useState(null);
@@ -16,22 +16,50 @@ const UsersContainer: React.FC<UserContainerType> = (sortType) => {
   const [usersCount, setUsersCount] = useState(0);
   
 
+  function sortByCity(a, b) {
+    if (a.address.city > b.address.city) return 1;
+    if (a.address.city == b.address.city) return 0;
+    if (a.address.city < b.address.city) return -1;
+  } 
+
+  function sortByCompanyName(a, b) {
+    if (a.company.name > b.company.name) return 1;
+    if (a.company.name == b.company.name) return 0;
+    if (a.company.name < b.company.name) return -1;
+  } 
+
+  
+
   useEffect(() => {
     usersAPI.getUsers()
-      .then((actualData: any) => {
+      .then((actualData) => {
         console.log("Данные конкретного пользователя");
         console.log(actualData);
         setData(actualData);
         setUsersCount(actualData.length);
         setError(null);
       })
-      .catch((err: any) => {
+      .catch((err) => {
         console.log(err.message);
       })
       .finally(() => {
         setLoading(false)
       });
   }, []);
+
+  useEffect(() => {
+    if (data !== null) {
+      if (sortType == "city") {
+        console.log("aboba");
+        setData(data.sort(sortByCity));
+        console.log(data);
+      } else if (sortType == "name") {
+        console.log("adoba");
+        setData(data.sort(sortByCompanyName));
+        console.log(data);
+      }
+    }
+  }, [sortType])
 
   return (
     <div className={styles.users}>
@@ -47,4 +75,4 @@ const UsersContainer: React.FC<UserContainerType> = (sortType) => {
     </div>
   );
 };
-export default UsersContainer;
+export default React.memo(UsersContainer);

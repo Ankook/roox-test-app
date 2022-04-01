@@ -13,7 +13,7 @@ import ProfileContainer from "./components/ProfileContainer/ProfileContainer";
 
 function App() {
 
-  const [sortType, setSortType] = useState(null);
+  const [sortType, setSortType] = useState("default");
 
   function handleSortChange(newValue: any) {
     setSortType(newValue);

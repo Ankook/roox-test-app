@@ -9,7 +9,7 @@ const Sidebar = (props) => {
 
   function handleClick(event) {
     if (event.target.innerHTML === "по городу") {
-      props.changeSortType("сity")
+      props.changeSortType("city")
     } else if (event.target.innerHTML === "по компании") {
       props.changeSortType("name")
     }

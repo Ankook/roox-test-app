@@ -8,9 +8,11 @@ import { usersAPI } from '../../api/api';
 
 
 const UsersContainer = ({ sortType }) => {
-  console.log("Пропс sortType");
+  console.log("Значение пропса sortType");
   console.log(sortType);
+  
   const [data, setData] = useState(null);
+  const [sortEvent, setSortEvent] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [usersCount, setUsersCount] = useState(0);
@@ -33,7 +35,7 @@ const UsersContainer = ({ sortType }) => {
   useEffect(() => {
     usersAPI.getUsers()
       .then((actualData) => {
-        console.log("Данные конкретного пользователя");
+        console.log("Обращаемся к API");
         console.log(actualData);
         setData(actualData);
         setUsersCount(actualData.length);
@@ -48,15 +50,25 @@ const UsersContainer = ({ sortType }) => {
   }, []);
 
   useEffect(() => {
+    //console.log("Значение data");
+    //console.log(data);
     if (data !== null) {
+      //console.log("Значение пропса sortType внутир useEffect");
+      //console.log(sortType);
+      //console.log("Тип sortType внутри useEffect");
+      //console.log(typeof sortType);
       if (sortType == "city") {
-        console.log("aboba");
+        console.log("Сортируем пользователей по городу");
         setData(data.sort(sortByCity));
-        console.log(data);
+        setSortEvent(sortEvent + 1);
+        //console.log(sortEvent);
+        //console.log(data);
       } else if (sortType == "name") {
-        console.log("adoba");
+        console.log("Сортируем пользоватеей по назаванию компании");
         setData(data.sort(sortByCompanyName));
-        console.log(data);
+        setSortEvent(sortEvent + 1);
+        //console.log(sortEvent);
+        //console.log(data);
       }
     }
   }, [sortType])
@@ -75,4 +87,4 @@ const UsersContainer = ({ sortType }) => {
     </div>
   );
 };
-export default React.memo(UsersContainer);
+export default UsersContainer;

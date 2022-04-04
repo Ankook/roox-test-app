@@ -11,6 +11,7 @@ interface Props {
   onClick?: any;
   name?: string;
   disabled?: boolean;
+  editMode?: boolean;
 }
 
 const Button: React.FC<Props> = ({
@@ -19,7 +20,7 @@ const Button: React.FC<Props> = ({
   theme,
   className,
   name,
-  disabled,
+  disabled
 }: Props) => {
   const getTheme = () => {
     if (theme === Themes.eggPlant) {

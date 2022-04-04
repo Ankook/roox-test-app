@@ -6,8 +6,11 @@ import { usersAPI } from '../../api/api';
 
 
 
+type UsersContainerType = {
+  sortType: string
+}
 
-const UsersContainer = ({ sortType }) => {
+const UsersContainer:React.FC<UsersContainerType> = ({ sortType }) => {
   console.log("Значение пропса sortType");
   console.log(sortType);
   
@@ -18,15 +21,15 @@ const UsersContainer = ({ sortType }) => {
   const [usersCount, setUsersCount] = useState(0);
   
 
-  function sortByCity(a, b) {
+  function sortByCity(a: any, b: any) {
     if (a.address.city > b.address.city) return 1;
-    if (a.address.city == b.address.city) return 0;
+    if (a.address.city === b.address.city) return 0;
     if (a.address.city < b.address.city) return -1;
   } 
 
-  function sortByCompanyName(a, b) {
+  function sortByCompanyName(a: any, b: any) {
     if (a.company.name > b.company.name) return 1;
-    if (a.company.name == b.company.name) return 0;
+    if (a.company.name === b.company.name) return 0;
     if (a.company.name < b.company.name) return -1;
   } 
 
@@ -34,14 +37,14 @@ const UsersContainer = ({ sortType }) => {
 
   useEffect(() => {
     usersAPI.getUsers()
-      .then((actualData) => {
+      .then((actualData: any) => {
         console.log("Обращаемся к API");
         console.log(actualData);
         setData(actualData);
         setUsersCount(actualData.length);
         setError(null);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err.message);
       })
       .finally(() => {

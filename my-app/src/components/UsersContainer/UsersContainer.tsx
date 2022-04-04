@@ -61,13 +61,13 @@ const UsersContainer = ({ sortType }) => {
         console.log("Сортируем пользователей по городу");
         setData(data.sort(sortByCity));
         setSortEvent(sortEvent + 1);
-        //console.log(sortEvent);
+        console.log(sortEvent);
         //console.log(data);
       } else if (sortType == "name") {
         console.log("Сортируем пользоватеей по назаванию компании");
         setData(data.sort(sortByCompanyName));
         setSortEvent(sortEvent + 1);
-        //console.log(sortEvent);
+        console.log(sortEvent);
         //console.log(data);
       }
     }

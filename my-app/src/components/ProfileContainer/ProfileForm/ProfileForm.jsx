@@ -13,13 +13,16 @@ const ProfileForm = ({ data, editMode }) => {
   console.log(data);
   console.log(editMode);
 
+  
+  
+
   return (
-    
+  
     <div className={styles.profileForm}>
       {data && (
         <>
       <div className={styles.fillArea}>
-            <Input label='Name' name="name"  value={data.name} editMode={editMode}/>
+        <Input label='Name' name="name"  value={data.name} editMode={editMode}/>
         <Input label='Username' name="username" value={data.username} editMode={editMode} />
         <Input label ="E-mail" name="email"  value={data.email} editMode={editMode} />
         <Input label="Street" name="street" value={data.address.street} editMode={editMode}/>

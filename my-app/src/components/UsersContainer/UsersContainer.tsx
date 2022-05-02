@@ -8,20 +8,25 @@ import {IUser} from "../../features/users/types/index";
 import {SortConfigState} from "../../features/sortConfig/types/index";
 
 const UsersContainer: React.FC = () => {
-	const users = useAppSelector((state) => state.users.users);
+  const users = useAppSelector((state) => state.users.users);
+  console.log("usersFromRedux");
+  console.log(users)
   const sortType = useAppSelector((state) => state.sort.sortType);
   const error = useAppSelector(state => state.users.error);
   const isLoad = useAppSelector(state => state.users.isLoad);
   const [sortedUsers, setSortedUsers] = useState<Array<IUser>>([]);
   const [usersCount, setUsersCount] = useState(0);
 
-  const sortByType = (sortType: string, users: Array<IUser>): any => {
-		if ((sortType = "city")) {
-      setSortedUsers(users.sort(sortByCity));
-		} else if (sortType = "company") {
-			setSortedUsers(users.sort(sortByCompanyName));
-		} else if (sortType = "none")
-		setSortedUsers(users);
+  const sortByType = (sortType: string, usersForSort: Array<IUser>): any => {
+    if (sortType == "city") {
+      setSortedUsers(usersForSort.sort(sortByCity));
+      console.log(usersForSort);
+    } else if (sortType == "company") {
+      setSortedUsers(usersForSort.sort(sortByCompanyName));
+      console.log(usersForSort);
+    } else if (sortType == "none") {
+      setSortedUsers(usersForSort);
+    }
   }
   
   const sortByCity = (a: IUser, b: IUser): number => {
@@ -41,7 +46,7 @@ const UsersContainer: React.FC = () => {
     let usersForSort = [...users];
     usersForSort.sort(sortByType(sortType, usersForSort));
     setUsersCount(users.length);
-	}, [users]);
+	}, [users, sortType]);
 
 	
 

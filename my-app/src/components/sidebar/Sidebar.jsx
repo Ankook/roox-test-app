@@ -3,11 +3,12 @@ import { Button } from '../Ui-kit/button/Button';
 import styles from "./sidebar.module.scss"
 import { Themes } from "../Ui-kit/types";
 import { setSort } from '../../features/sortConfig/sortSlice';
-import { Dispatch } from '@reduxjs/toolkit';
-
+import { useAppDispatch } from '../../app/hooks';
 
 
 const Sidebar = (props) => {
+
+  const dispatch = useAppDispatch();
 
   function handleClick(event) {
     if (event.target.innerHTML === "по городу") {

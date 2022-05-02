@@ -4,11 +4,18 @@ import { UsersState } from './types';
 
 const getUsers = createAsyncThunk(
   'users/getUsers',
-  async () => {
+  () => {
     return usersAPI.getUsers();
   }
 )
 
+/*export const fetchGetModelsStatistics = createAsyncThunk(
+	"models/getModelsStatistcs",
+	(dto: IGetModelsStatistics) => {
+		return getModelsStatistcs(dto);
+	}
+);
+*/
 
 const initialState: UsersState = {
   users: [],

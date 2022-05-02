@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import  getUsers  from "../src/features/users/usersSlice";
+import getUsers from "../src/features/users/usersSlice";
 import logo from './logo.svg';
 import './App.scss';
 import {

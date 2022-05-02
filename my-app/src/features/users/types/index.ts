@@ -35,5 +35,6 @@ export interface IUser {
 
 export interface UsersState {
   users: Array<IUser>,
-  isLoad: boolean
+  isLoad: boolean,
+  error: string
 }

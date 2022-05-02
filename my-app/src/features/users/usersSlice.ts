@@ -29,7 +29,7 @@ export const usersSlice = createSlice({
     builder.addCase(getUsers.fulfilled, (state: UsersState, action: any) => {
       state.users = action.payload;
       state.isLoad = false;
-      state.error = {};
+      state.error = false;
     })
     builder.addCase(getUsers.rejected, (state: UsersState, action: any) => {
       state.isLoad = false;

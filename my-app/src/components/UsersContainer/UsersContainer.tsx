@@ -12,35 +12,42 @@ const UsersContainer: React.FC = () => {
   const sortType = useAppSelector((state) => state.sort.sortType);
   const error = useAppSelector(state => state.users.error);
   const isLoad = useAppSelector(state => state.users.isLoad);
-	const [sortedUsers, setSortedUsers] = useState<Array<IUser>>([]);
+  const [sortedUsers, setSortedUsers] = useState<Array<IUser>>([]);
+  const [usersCount, setUsersCount] = useState(0);
 
-	useEffect(() => {
-		users.sort(sortByType(sortType, users));
-	}, [users]);
-
-	const [usersCount, setUsersCount] = useState(0);
-
-	function sortByType(sortType: string, users: Array<IUser>) {
+  const sortByType = (sortType: string, users: Array<IUser>): any => {
 		if ((sortType = "city")) {
-			setSortedUsers(users.sort(sortByCity));
-			console.log(sortedUsers);
-		} else if ((sortType = "company")) {
+      setSortedUsers(users.sort(sortByCity));
+		} else if (sortType = "company") {
 			setSortedUsers(users.sort(sortByCompanyName));
-		}
-		return setSortedUsers(users);
-	}
-
-	function sortByCity(a: any, b: any) {
+		} else if (sortType = "none")
+		setSortedUsers(users);
+  }
+  
+  const sortByCity = (a: IUser, b: IUser): number => {
 		if (a.address.city > b.address.city) return 1;
 		if (a.address.city < b.address.city) return -1;
 		return 0;
 	}
 
-	function sortByCompanyName(a: any, b: any) {
+	const sortByCompanyName = (a: IUser, b: IUser): number => {
 		if (a.company.name > b.company.name) return 1;
 		if (a.company.name < b.company.name) return -1;
 		return 0;
 	}
+
+
+  useEffect(() => {
+    let usersForSort = [...users];
+    usersForSort.sort(sortByType(sortType, usersForSort));
+    setUsersCount(users.length);
+	}, [users]);
+
+	
+
+	
+
+
 
 	return (
 		<div className={styles.users}>

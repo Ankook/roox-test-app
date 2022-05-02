@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import sortReducer from "../features/sortConfig/sortSlice"
 import usersReducer from "../features/users/usersSlice";
-
+import editModeReducer from "../features/editMode/editModeSlice";
 
 export const store = configureStore({
   reducer: {
     users: usersReducer,
     sort: sortReducer,
+    editMode: editModeReducer,
   },
 })
 

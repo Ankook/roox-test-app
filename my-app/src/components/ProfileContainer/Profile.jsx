@@ -3,16 +3,17 @@ import { Button } from '../Ui-kit/button/Button';
 import styles from "./profile.module.scss"
 import { Themes } from "../Ui-kit/types";
 import ProfileForm from "./ProfileForm/ProfileForm";
+import { useAppDispatch } from '../../app/hooks';
 
 
 
 
 const Profile = ({ data }) => {
 
-  const [editMode, setEditMode] = useState(false);
-
+  const dispatch = useAppDispatch();
+  
   function handleClick(event) {
-    setEditMode(true);
+    dispatch()
     console.log("Установили режим редактирования");
   }
 

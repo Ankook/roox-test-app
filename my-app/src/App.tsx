@@ -20,21 +20,16 @@ function App() {
   dispatch(getUsers());
 
 
-  const [sortType, setSortType] = useState("default");
-
-  function handleSortChange(newValue: any) {
-    setSortType(newValue);
-    console.log(newValue);
-  }
+  
 
   return (
     <div className="app">
-      <Sidebar changeSortType={handleSortChange} />
+      <Sidebar/>
       <div className='app-wrapper-content'>
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={<UsersContainer sortType={sortType} />} />
-            <Route path="/users" element={<UsersContainer sortType={sortType} />} />
+            <Route path="/" element={<UsersContainer/>} />
+            <Route path="/users" element={<UsersContainer/>} />
             <Route path="/users/:id" element={<ProfileContainer />} />
         </Routes>
       </BrowserRouter>

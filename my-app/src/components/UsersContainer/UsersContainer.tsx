@@ -10,6 +10,7 @@ import {SortConfigState} from "../../features/sortConfig/types/index";
 const UsersContainer: React.FC = () => {
 	const users = useAppSelector((state) => state.users.users);
   const sortType = useAppSelector((state) => state.sort.sortType);
+  const error = useAppSelector(state => state.users.error);
   const isLoad = useAppSelector(state => state.users.isLoad);
 	const [sortedUsers, setSortedUsers] = useState<Array<IUser>>([]);
 

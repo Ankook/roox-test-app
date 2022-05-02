@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import getUsers from "../src/features/users/usersSlice";
+import { getUsers } from "../src/features/users/usersSlice";
+import { useAppDispatch } from './app/hooks';
 import logo from './logo.svg';
 import './App.scss';
 import {
@@ -15,7 +15,7 @@ import ProfileContainer from "./components/ProfileContainer/ProfileContainer";
 
 function App() {
 
-  const dispatch = useDispatch(); //Этот хук возвращает ссылку на dispatch-функцию из хранилища Redux
+  const dispatch = useAppDispatch(); //Этот хук возвращает ссылку на dispatch-функцию из хранилища Redux
 
   useEffect(() => { //dispatch должен быть cтабильным, но приходится добавлять в массив зависимостей.
     dispatch(getUsers());

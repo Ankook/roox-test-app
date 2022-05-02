@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { usersAPI } from '../../api/api'
+import { UsersState } from './types';
 
 const getUsers = createAsyncThunk(
   'users/getUsers',
@@ -8,12 +9,6 @@ const getUsers = createAsyncThunk(
   }
 )
 
-
-
-export interface UsersState {
-  users: Array<any>,
-  isLoad: boolean
-}
 
 const initialState: UsersState = {
   users: [],
@@ -27,13 +22,13 @@ export const usersSlice = createSlice({
     
   },
   extraReducers: (builder) => {
-    builder.addCase(getUsers.pending, (state: any, action: any) => {
-      
+    builder.addCase(getUsers.pending, (state: UsersState, action: any) => {
+      state.isLoad = true;
     }),
-    builder.addCase(getUsers.fulfilled, (state: any, action: any) => {
-      
+    builder.addCase(getUsers.fulfilled, (state: UsersState, action: any) => {
+      console.log(action);
     }),
-    builder.addCase(getUsers.rejected, (state: any, action: any) => {
+    builder.addCase(getUsers.rejected, (state: UsersState, action: any) => {
       
     })
   },

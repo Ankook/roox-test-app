@@ -13,7 +13,7 @@ export const getUsers = createAsyncThunk(
 const initialState: UsersState = {
   users: [],
   isLoad: false,
-  error: ""
+  error: {}
 }
 
 export const usersSlice = createSlice({
@@ -29,10 +29,11 @@ export const usersSlice = createSlice({
     builder.addCase(getUsers.fulfilled, (state: UsersState, action: any) => {
       state.users = action.payload;
       state.isLoad = false;
+      state.error = {};
     })
     builder.addCase(getUsers.rejected, (state: UsersState, action: any) => {
       state.isLoad = false;
-      state.error = action.payload
+      state.error = action.error;
     })
   },
 })

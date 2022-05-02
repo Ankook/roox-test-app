@@ -4,16 +4,17 @@ import Input from "../../Ui-kit/Input/Input";
 import Textarea from "../../Ui-kit/Textarea/Textarea";
 import { Button } from '../../Ui-kit/button/Button';
 import { Themes } from "../../Ui-kit/types";
+import { useAppSelector } from '../../../app/hooks';
 
 
 
 
-const ProfileForm = ({ data, editMode }) => {
+const ProfileForm = ({ data }) => {
   console.log("Пропсы компоненты ProfileForm");
   console.log(data);
-  console.log(editMode);
-
   
+
+  const editMode = useAppSelector(state => state.editMode.editMode);
   
 
   return (
@@ -33,7 +34,7 @@ const ProfileForm = ({ data, editMode }) => {
             <Textarea label='Comment' editMode={editMode}/>
       </div>
       <div className={styles.submitArea}>
-            <Button text='Отправить' disabled={!editMode} theme={editMode ? Themes.salad : Themes.grey}/>
+            <Button text='Отправить' disabled={editMode} theme={editMode ? Themes.salad : Themes.grey}/>
           </div>
       </>
       )}

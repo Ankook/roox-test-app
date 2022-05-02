@@ -10,7 +10,9 @@ export const editModeSlice = createSlice({
   initialState,
   reducers: {
     setEditMode(state: EditModeState, action) {
-      state.editMode = true
+      console.log("ABOBA");
+      console.log(action);
+      state.editMode = true;
     }
   },
 })

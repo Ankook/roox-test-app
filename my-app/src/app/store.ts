@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     users: usersReducer,
     sort: sortReducer,
-    editMode: editModeReducer,
+    editMode: editModeReducer
   },
 })
 

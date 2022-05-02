@@ -17,9 +17,7 @@ function App() {
 
   const dispatch = useAppDispatch(); //Этот хук возвращает ссылку на dispatch-функцию из хранилища Redux
 
-  useEffect(() => { //dispatch должен быть cтабильным, но приходится добавлять в массив зависимостей.
-    dispatch(getUsers());
-  }, [dispatch]);
+  dispatch(getUsers());
 
 
   const [sortType, setSortType] = useState("default");
@@ -28,8 +26,6 @@ function App() {
     setSortType(newValue);
     console.log(newValue);
   }
-
-
 
   return (
     <div className="app">

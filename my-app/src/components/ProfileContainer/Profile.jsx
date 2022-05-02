@@ -4,6 +4,7 @@ import styles from "./profile.module.scss"
 import { Themes } from "../Ui-kit/types";
 import ProfileForm from "./ProfileForm/ProfileForm";
 import { useAppDispatch } from '../../app/hooks';
+import { setEditMode } from '../../features/editMode/editModeSlice';
 
 
 
@@ -13,7 +14,7 @@ const Profile = ({ data }) => {
   const dispatch = useAppDispatch();
   
   function handleClick(event) {
-    dispatch()
+    dispatch(setEditMode());
     console.log("Установили режим редактирования");
   }
 
@@ -25,7 +26,7 @@ const Profile = ({ data }) => {
         <h1 className={styles.title}>Профиль пользователя</h1>
         <Button onClick={handleClick} text='Редактировать' theme={Themes.eggPlant} />
       </div>
-      <ProfileForm editMode={editMode} data={data}/>
+      <ProfileForm  data={data}/>
     </div>
   );
 };

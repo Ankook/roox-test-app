@@ -24,11 +24,11 @@ export const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getUsers.pending, (state: UsersState, action: any) => {
       state.isLoad = true;
-    }),
+    })
     builder.addCase(getUsers.fulfilled, (state: UsersState, action: any) => {
       state.users = action.payload;
       state.isLoad = false;
-    }),
+    })
     builder.addCase(getUsers.rejected, (state: UsersState, action: any) => {
       state.isLoad = false;
     })

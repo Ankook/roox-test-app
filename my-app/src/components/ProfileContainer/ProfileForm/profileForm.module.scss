@@ -1,8 +1,11 @@
-.profileForm  {
+.profileContent  {
   display: flex;
   flex-direction: column;
 
 
+  .formList {
+    list-style: none;
+  }
 
   .submitArea {
     align-self: flex-end;

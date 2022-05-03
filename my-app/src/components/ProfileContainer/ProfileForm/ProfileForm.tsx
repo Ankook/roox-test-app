@@ -50,10 +50,16 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
     });
   }
 
+  type InputParameters = "label" | "type" | "placeholder" | "key";
   
-  
+  interface InputValues {
+    label: string;
+    type: string;
+    placeholder: string;
+    key: string;
+  }
 
-  const inputsScheme = [
+  const inputsScheme: Array<InputValues>  = [
     {
       label: 'Name',
       type: 'text',
@@ -112,25 +118,19 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
 
   return (
   
-    <div className={styles.profileForm}>
+    <div className={styles.profileContent}>
       {data && (
         <>
-        <div className={styles.fillArea}>
-            {inputsScheme.map(item => {
-              let key = item.key;
+          <div className={styles.fillArea}>
+            <ul className={styles.formList}>
+            {inputsScheme.map((item: InputValues) => {
               return (
-                <Input type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[key]} editMode={editMode}/>
-            )
+                <li className={styles.formItem} >
+                  <Input type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[item.key as keyof ProfileState]} editMode={editMode}/>
+                </li>
+              )
           })}
-        <Input label='Name' name="name" onChange={handleOnChange}  defaultValue={inputs.name} editMode={editMode}/>
-        <Input label='Username' name="username" onChange={handleOnChange} defaultValue={inputs.username} editMode={editMode} />
-        <Input label ="E-mail" name="email" onChange={handleOnChange}  defaultValue={inputs.email} editMode={editMode} />
-        <Input label="Street" name="street" onChange={handleOnChange} defaultValue={inputs.street} editMode={editMode}/>
-        <Input label="City"  name="city"  onChange={handleOnChange} defaultValue={inputs.city} editMode={editMode} />
-        <Input label="Zip code" name="zipcode"  onChange={handleOnChange} defaultValue={inputs.zipcode} editMode={editMode} />
-        <Input label="Phone" name="phone" onChange={handleOnChange} defaultValue={inputs.phone} editMode={editMode} />
-        <Input label='Website' name="website" onChange={handleOnChange} defaultValue={inputs.website} editMode={editMode} />
-            <Textarea value={inputs.textarea} label='Comment' editMode={editMode}/>
+        </ul>
       </div>
       <div className={styles.submitArea}>
             <Button text='Отправить' disabled={editMode} theme={editMode ? Themes.salad : Themes.grey}/>

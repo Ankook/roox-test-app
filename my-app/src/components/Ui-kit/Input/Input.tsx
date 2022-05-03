@@ -16,7 +16,7 @@ const Input :React.FC<InputProps>  = ({
     <div className={styles.componentContainer}>
       <div className={styles.fakeLabel}>{label}</div>
       <div className={styles.inputContainer}>
-        <input
+        <input className={styles.input}
           disabled={!editMode}
           type="text"
           name={name} defaultValue={defaultValue} />

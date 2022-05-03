@@ -125,7 +125,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
             <ul className={styles.formList}>
             {inputsScheme.map((item: InputValues) => {
               return (
-                <li className={styles.formItem} >
+                <li key={item.key} className={styles.formItem} >
                   <Input type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[item.key as keyof ProfileState]} editMode={editMode}/>
                 </li>
               )

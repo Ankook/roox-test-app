@@ -1,7 +1,6 @@
 import React, { FC , useState, useEffect } from 'react';
 import styles from "./profileForm.module.scss";
 import Input from "../../Ui-kit/Input/Input";
-import Textarea from "../../Ui-kit/Textarea/Textarea";
 import { Button } from '../../Ui-kit/button/Button';
 import { Themes } from "../../Ui-kit/types";
 import { useAppSelector } from '../../../app/hooks';
@@ -49,8 +48,6 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
       [evt.target.name]: value
     });
   }
-
-  type InputParameters = "label" | "type" | "placeholder" | "key";
   
   interface InputValues {
     label: string;

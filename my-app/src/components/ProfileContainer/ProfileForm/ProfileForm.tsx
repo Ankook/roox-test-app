@@ -48,6 +48,8 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
       [evt.target.name]: value
     });
   }
+
+  
   
   interface InputValues {
     label: string;
@@ -114,7 +116,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   ];
 
   return (
-  
+    <form onSubmit={handleSubmit}>
     <div className={styles.profileContent}>
       {data && (
         <>
@@ -134,7 +136,8 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
           </div>
       </>
       )}
-    </div>
+      </div>
+    </form>
   );
 };
 

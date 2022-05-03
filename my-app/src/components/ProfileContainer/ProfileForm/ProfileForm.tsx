@@ -30,7 +30,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   console.log(data);
   
   const [inputs, setInputs] = useState<ProfileState>({
-    name: data.name,
+    name: data?.name,
     username: data?.username,
     email: data?.email,
     street: data?.address.street,

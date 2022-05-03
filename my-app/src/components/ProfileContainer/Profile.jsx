@@ -5,6 +5,7 @@ import {Themes} from "../Ui-kit/types";
 import ProfileForm from "./ProfileForm/ProfileForm";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {setEditMode} from "../../features/editMode/editModeSlice";
+import ProfileFormWithFormik from "./ProfileFormWithForkmik/ProfileFormWithFormik";
 
 const Profile = ({data}) => {
 	const dispatch = useAppDispatch();
@@ -25,7 +26,8 @@ const Profile = ({data}) => {
 					theme={Themes.eggPlant}
 				/>
 			</div>
-			<ProfileForm data={data} />
+      <ProfileForm data={data} />
+      <ProfileFormWithFormik data={data}/>
 		</div>
 	);
 };

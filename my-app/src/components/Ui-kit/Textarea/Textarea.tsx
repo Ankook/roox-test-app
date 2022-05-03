@@ -2,19 +2,19 @@ import React from "react";
 import styles from "./textarea.module.scss";
 
 interface TextareProps {
-  placeholder: string;
   label: string;
   editMode: boolean
+  value: string
 }
 
 const Textarea:React.FC<TextareProps>  = ({
-  placeholder, label, editMode
+  label, editMode, value
 }) => {
   return (
     <div className={styles.componentContainer}>
       <div className={styles.fakeLabel}>{label}</div>
       <div className={styles.textareaContainer}>
-        <textarea disabled={!editMode} rows={3}>{placeholder}</textarea>
+        <textarea disabled={!editMode} rows={3}>{value}</textarea>
       </div>
     </div>
   );

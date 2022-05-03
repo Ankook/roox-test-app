@@ -6,11 +6,9 @@ interface InputProps {
   value?: string;
   editMode: boolean;
   name: string;
-  placeholder: string
 }
-
-const Input:React.FC<InputProps>  = ({
-  label, value, editMode, name, placeholder
+const Input :React.FC<InputProps>  = ({
+  label, value, editMode, name
 }) => {
   
   return (
@@ -19,7 +17,6 @@ const Input:React.FC<InputProps>  = ({
       <div className={styles.inputContainer}>
         <input
           disabled={!editMode}
-          placeholder={placeholder}
           type="text"
           name={name} value={value} />
       </div>

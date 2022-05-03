@@ -28,6 +28,7 @@ interface ProfileFormProps  {
 const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   console.log("Пропсы компоненты ProfileForm");
   console.log(data);
+  const editMode = useAppSelector(state => state.editMode.editMode);
   
   const [inputs, setInputs] = useState<ProfileState>({
     name: data.name,
@@ -49,16 +50,78 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
     });
   }
 
-
-  const editMode = useAppSelector(state => state.editMode.editMode);
   
+  
+
+  const inputsScheme = [
+    {
+      label: 'Name',
+      type: 'text',
+      placeholder: 'Иван Иванов',
+      key: 'name',
+    },
+    {
+      label: 'User name',
+      type: 'text',
+      placeholder: 'Ivan',
+      key: 'username',
+    },
+    {
+      label: 'E-mail',
+      type: 'email',
+      placeholder: 'example@mail.com',
+      key: 'email',
+    },
+    {
+      label: 'Street',
+      type: 'text',
+      placeholder: 'ул. Пример',
+      key: 'street',
+    },
+    {
+      label: 'City',
+      type: 'text',
+      placeholder: 'Москва',
+      key: 'city',
+    },
+    {
+      label: 'Zip code',
+      type: 'text',
+      placeholder: '1234234',
+      key: 'zipcode',
+    },
+    {
+      label: 'Phone',
+      type: 'tel',
+      placeholder: '89991112233',
+      key: 'phone',
+    },
+    {
+      label: 'Website',
+      type: 'text',
+      placeholder: 'www.example.com',
+      key: 'website',
+    },
+    {
+      label: 'Comment',
+      type: 'textarea',
+      placeholder: '',
+      key: 'comment',
+    },
+  ];
 
   return (
   
     <div className={styles.profileForm}>
       {data && (
         <>
-      <div className={styles.fillArea}>
+        <div className={styles.fillArea}>
+            {inputsScheme.map(item => {
+              let key = item.key;
+              return (
+                <Input type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[key]} editMode={editMode}/>
+            )
+          })}
         <Input label='Name' name="name" onChange={handleOnChange}  defaultValue={inputs.name} editMode={editMode}/>
         <Input label='Username' name="username" onChange={handleOnChange} defaultValue={inputs.username} editMode={editMode} />
         <Input label ="E-mail" name="email" onChange={handleOnChange}  defaultValue={inputs.email} editMode={editMode} />

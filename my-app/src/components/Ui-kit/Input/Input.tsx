@@ -3,13 +3,14 @@ import styles from "./input.module.scss";
 
 interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  type: string
   label: string;
   defaultValue: string;
   editMode: boolean;
   name: string;
 }
 const Input :React.FC<InputProps>  = ({
-  label, defaultValue, editMode, name
+  label, defaultValue, editMode, name, type
 }) => {
   
   return (

@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./input.module.scss";
 
 interface InputProps {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   label: string;
-  value?: string;
+  defaultValue: string;
   editMode: boolean;
   name: string;
 }
 const Input :React.FC<InputProps>  = ({
-  label, value, editMode, name
+  label, defaultValue, editMode, name
 }) => {
   
   return (
@@ -18,7 +19,7 @@ const Input :React.FC<InputProps>  = ({
         <input
           disabled={!editMode}
           type="text"
-          name={name} value={value} />
+          name={name} defaultValue={defaultValue} />
       </div>
     </div>
   );

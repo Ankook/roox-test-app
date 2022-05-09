@@ -15,7 +15,7 @@ export interface ProfileInputsState {
   zipcode: string,
   phone: string,
   website: string,
-  textarea: string
+  comment: string
 }
 type ProfileInputStateValues = ProfileInputsState[keyof ProfileInputsState];
 
@@ -86,7 +86,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
     zipcode: profileData.address.zipcode,
     phone: profileData.phone,
     website: profileData.website,
-    textarea: "",
+    comment: "",
   });
 
  
@@ -100,7 +100,18 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
     });
 
     if (isFormValid)  {
-      
+      const profileJSON = {
+				name: inputs.name,
+				username: inputs.username,
+				email: inputs.email,
+				street: inputs.street,
+				city: inputs.city,
+				zipcode: inputs.zipcode,
+				phone: inputs.phone,
+				website: inputs.website,
+				comment: inputs.comment
+			}
+			console.log(JSON.stringify(profileJSON));
     } 
 
     

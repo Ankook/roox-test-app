@@ -84,16 +84,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
     textarea: "",
   });
 
-  const HandleOnChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    const value = evt.target.value;
-    console.log(value);
-      setInputs({
-        ...inputs,
-        [evt.target.name]: value
-      });
-    console.log(inputs.username);
-  }
-
+ 
   const handleSubmit = (event: React.FormEvent) => {
     console.log("Нажали на кнопку handleSubmit");
     event.preventDefault();
@@ -180,7 +171,9 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
                 {inputsScheme.map((item: InputValues) => {
                   return (
                     <li key={item.key} className={styles.formItem} >
-                      <Input className={inputErrors[item.key as keyof ProfileInputErrorsState] == 'true'? 'red' : 'blue'} type={item.type} label={item.label} name={item.label} onChange={HandleOnChange} defaultValue={inputs[item.key as keyof ProfileInputsState]} editMode={editMode} />
+                      <Input className={inputErrors[item.key as keyof ProfileInputErrorsState] == 'true'? 'red' : 'blue'} type={item.type} label={item.label} name={item.label} 
+                        onChange={(event) => { setInputs(prev => ({ ...prev, [item.key]: event.target.value }))}}
+                     value={inputs[item.key as keyof ProfileInputsState]} editMode={editMode} />
                     </li>
                   )
                 })}

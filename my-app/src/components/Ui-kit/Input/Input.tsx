@@ -6,13 +6,13 @@ interface InputProps {
   onChange: (e: any) => void  
   type: string
   label: string;
-  defaultValue: string;
+  value: string;
   editMode: boolean;
   name: string;
   className: any
 }
 const Input :React.FC<InputProps>  = ({
-  label, defaultValue, editMode, name, type, className, onChange
+  label, value, editMode, name, type, className, onChange
 }) => {
   console.log(className);
   if (type == "textarea") {
@@ -33,7 +33,7 @@ const Input :React.FC<InputProps>  = ({
             onChange={onChange}
             disabled={!editMode}
             type="text"
-            name={name} defaultValue={defaultValue} />
+            name={name} value={value} />
         </div>
       </div>
     );

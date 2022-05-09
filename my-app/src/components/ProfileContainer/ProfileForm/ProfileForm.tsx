@@ -17,7 +17,6 @@ export interface ProfileInputsState {
   website: string;
   comment: string;
 }
-type ProfileInputStateValues = ProfileInputsState[keyof ProfileInputsState];
 
 export interface ProfileInputErrorsState {
   name: string;
@@ -93,7 +92,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
     event.preventDefault();
 
     inputsScheme.forEach((item: any) => {
-      item.key != "comment" &&
+      item.key !== "comment" &&
         inputValid(
           inputs[item.key as keyof ProfileInputsState],
           item.key,
@@ -184,9 +183,9 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
                         className={
                           inputErrors[
                             item.key as keyof ProfileInputErrorsState
-                          ] == "true"
+                          ] === "true"
                             ? "red"
-                            : "blue"
+                            : null
                         }
                         type={item.type}
                         label={item.label}

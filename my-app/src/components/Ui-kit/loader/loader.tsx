@@ -1,8 +1,6 @@
 import preloader from "../../../assets/preloader.svg";
 import styles from "./loader.module.scss";
-const Loader  = ({
-  
-}) => {
+const Loader  = () => {
   
   return (
     <div className={styles.loader}>

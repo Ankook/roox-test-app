@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
 }) => {
   console.log(className);
-  if (type == "textarea") {
+  if (type === "textarea") {
     return (
       <div className={styles.textAreaComponentContainer}>
         <div className={styles.fakeLabel}>{label}</div>
@@ -42,7 +42,7 @@ const Input: React.FC<InputProps> = ({
       <div
         className={cx(
           styles.inputContainer,
-          className == "red" ? styles.red : styles.blue
+          className === "red" ? styles.red : null
         )}
       >
         <input

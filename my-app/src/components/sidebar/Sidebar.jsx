@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { Button } from "../Ui-kit/button/Button";
 import styles from "./sidebar.module.scss";
 import { Themes } from "../Ui-kit/types";

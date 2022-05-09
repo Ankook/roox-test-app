@@ -43,7 +43,7 @@ const UsersContainer: React.FC = () => {
     let usersForSort = [...users];
     usersForSort.sort(sortByType(sortType, usersForSort));
     setUsersCount(users.length);
-  }, [users, sortType]);
+  }, [users, sortType, sortByType]);
 
   return (
     <div className={styles.users}>

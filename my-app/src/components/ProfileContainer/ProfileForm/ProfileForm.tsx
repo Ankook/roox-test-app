@@ -51,16 +51,12 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
 
 
   const inputValid = (inputValue: any, nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
-    {
-      !inputValue
-        ? 
-          [setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' })),
-          setFormValid(false)
-          ]
-        
-      :
-      setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: '' }))
-    }
+      if (!inputValue) {
+        setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' }));
+        setFormValid(false)
+      } else {
+        setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: '' }));
+      }
   }
 
   const [inputErrors, setInputErrors] = useState<ProfileInputErrorsState>({
@@ -100,18 +96,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
     });
 
     if (isFormValid)  {
-      const profileJSON = {
-				name: inputs.name,
-				username: inputs.username,
-				email: inputs.email,
-				street: inputs.street,
-				city: inputs.city,
-				zipcode: inputs.zipcode,
-				phone: inputs.phone,
-				website: inputs.website,
-				comment: inputs.comment
-			}
-			console.log(JSON.stringify(profileJSON));
+			console.log(JSON.stringify(inputs));
     } 
 
     

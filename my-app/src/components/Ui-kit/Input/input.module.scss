@@ -53,14 +53,16 @@
     min-width: 420px;
     box-sizing: border-box;
   
-    .textarea {
+  .textarea {
       background: white;
       resize: none;
       border: none;
       margin: 5px 10px;
       font-size: 10px;
       width: 100%;
-  
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
     }
   }
 }

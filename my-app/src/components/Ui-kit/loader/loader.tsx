@@ -1,10 +1,13 @@
-
+import preloader from "../../../assets/preloader.svg";
+import styles from "./loader.module.scss";
 const Loader  = ({
   
 }) => {
   
   return (
-    <div
+    <div className={styles.loader}>
+      <img alt="Preloader" src={preloader}/>
+    </div>
   );
 };
 

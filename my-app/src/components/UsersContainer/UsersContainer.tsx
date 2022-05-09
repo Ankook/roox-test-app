@@ -6,6 +6,7 @@ import { useAppSelector } from "../../app/hooks";
 
 import { IUser } from "../../features/users/types/index";
 import { SortConfigState } from "../../features/sortConfig/types/index";
+import Loader from "../Ui-kit/loader/loader";
 
 const UsersContainer: React.FC = () => {
   const users = useAppSelector((state) => state.users.users);
@@ -50,10 +51,7 @@ const UsersContainer: React.FC = () => {
   return (
     <div className={styles.users}>
       <h1 className={styles.header}>Список пользователей</h1>
-      {isLoad && <div>A moment please...</div>}
-      {error && (
-        <div>{`There is a problem fetching the post data - ${error}`}</div>
-      )}
+      {isLoad && <Loader/>}
       <div className={styles.users}>
         <Users data={sortedUsers} />
       </div>

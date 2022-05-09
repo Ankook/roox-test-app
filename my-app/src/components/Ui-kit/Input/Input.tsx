@@ -14,6 +14,7 @@ interface InputProps {
 const Input :React.FC<InputProps>  = ({
   label, defaultValue, editMode, name, type, className
 }) => {
+  console.log(className);
   if (type == "textarea") {
     return (
       <div className={styles.textAreaComponentContainer}>
@@ -27,7 +28,7 @@ const Input :React.FC<InputProps>  = ({
     return (
       <div className={styles.inputComponentContainer}>
         <div className={styles.fakeLabel}>{label}</div>
-        <div className={cx(styles.inputContainer, styles.red)}>
+        <div className={cx(styles.inputContainer, className == "red" ? styles.red: styles.blue)}>
           <input className={styles.input}
             disabled={!editMode}
             type="text"

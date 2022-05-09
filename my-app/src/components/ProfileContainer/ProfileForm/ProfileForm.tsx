@@ -42,12 +42,17 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
   console.log("Пропсы компоненты ProfileForm");
   console.log(data);
   const editMode = useAppSelector(state => state.editMode.editMode);
+  console.log(editMode);
 
 
-  const inputValid = (inputScheme: InputValues, nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
-    !inputScheme ?
+  const inputValid = (inputValue: any, nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
+    console.log(inputValue);
+    console.log(!inputValue);
+    {
+      !inputValue ?
       setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' })) :
       setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: '' }))
+    }
   }
 
   const [inputErrors, setInputErrors] = useState<ProfileInputErrorsState>({
@@ -76,22 +81,25 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
     textarea: "",
   });
 
-  const handleOnChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const HandleOnChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
-    setInputs({
-      ...inputs,
-      [evt.target.name]: value
-    });
+    console.log(value);
+    useEffect(() => {
+      setInputs({
+        ...inputs,
+        [evt.target.name]: value
+      });
+    }, [])
+    console.log(inputs.username);
   }
 
   const handleSubmit = (event: React.FormEvent) => {
+    console.log("Нажали на кнопку handleSubmit");
     event.preventDefault();
-
-
 
     inputsScheme.forEach((item: any) => {
       (item.key != "comment") &&
-        inputValid(inputsScheme[item.key], item.key, setInputErrors)
+        inputValid(inputs[item.key as keyof ProfileInputsState], item.key, setInputErrors)
     });
   }
 
@@ -171,14 +179,14 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
                 {inputsScheme.map((item: InputValues) => {
                   return (
                     <li key={item.key} className={styles.formItem} >
-                      <Input className={inputErrors[item.key as keyof ProfileInputErrorsState] == 'true'? styles.red : styles.blue} type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[item.key as keyof ProfileInputsState]} editMode={editMode} />
+                      <Input className={inputErrors[item.key as keyof ProfileInputErrorsState] == 'true'? 'red' : 'blue'} type={item.type} label={item.label} name={item.label} onChange={HandleOnChange} defaultValue={inputs[item.key as keyof ProfileInputsState]} editMode={editMode} />
                     </li>
                   )
                 })}
               </ul>
             </div>
             <div className={styles.submitArea}>
-              <Button text='Отправить' disabled={editMode} theme={editMode ? Themes.salad : Themes.grey} />
+              <Button text='Отправить' disabled={!editMode} theme={editMode ? Themes.salad : Themes.grey} />
             </div>
           </>
         )}

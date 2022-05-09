@@ -6,7 +6,7 @@ import { Themes } from "../../Ui-kit/types";
 import { useAppSelector } from '../../../app/hooks';
 import { IUser } from '../../../features/users/types';
 
-export interface ProfileState {
+export interface ProfileInputsState {
   name: string;
   username: string;
   email: string,
@@ -16,6 +16,17 @@ export interface ProfileState {
   phone: string,
   website: string,
   textarea: string
+}
+
+export interface ProfileInputErrorsState  {
+  name: string;
+  username: string;
+  email: string,
+  street: string,
+  city: string,
+  zipcode: string,
+  phone: string,
+  website: string
 }
 
 interface ProfileFormProps  {
@@ -28,8 +39,29 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   console.log("Пропсы компоненты ProfileForm");
   console.log(data);
   const editMode = useAppSelector(state => state.editMode.editMode);
+
+
+  const inputValid = (input: ProfileInputStateValues , nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
+    !input ?
+      setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' })) :
+      setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: '' }))
+  }
   
-  const [inputs, setInputs] = useState<ProfileState>({
+  const [inputErrors, setInputErrors] = useState<ProfileInputErrorsState>({
+    name: '',
+    username: '',
+    email: '',
+    street: '',
+    city: '',
+    zipcode: '',
+    phone: '',
+    website: ''
+  })
+
+
+  type ProfileInputStateValues = ProfileInputsState[keyof ProfileInputsState];
+
+  const [inputs, setInputs] = useState<ProfileInputsState>({
     name: data.name,
     username: data.username,
     email: data.email,
@@ -125,7 +157,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
             {inputsScheme.map((item: InputValues) => {
               return (
                 <li key={item.key} className={styles.formItem} >
-                  <Input type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[item.key as keyof ProfileState]} editMode={editMode}/>
+                  <Input type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[item.key as keyof ProfileInputsState]} editMode={editMode}/>
                 </li>
               )
           })}

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./usersContainer.module.scss";
 import Users from "./Users";
-import { usersAPI } from "../../api/api";
 import { useAppSelector } from "../../app/hooks";
 
 import { IUser } from "../../features/users/types/index";
-import { SortConfigState } from "../../features/sortConfig/types/index";
 import Loader from "../Ui-kit/loader/loader";
 
 const UsersContainer: React.FC = () => {

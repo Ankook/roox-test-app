@@ -44,8 +44,8 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   const editMode = useAppSelector(state => state.editMode.editMode);
 
 
-  const inputValid = (input: ProfileInputStateValues , nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
-    !input ?
+  const inputValid = (inputScheme: InputValues , nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
+    !inputScheme ?
       setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' })) :
       setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: '' }))
   }
@@ -89,9 +89,9 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
 
 
   
-    inputs.forEach((item: any) => {
+    inputsScheme.forEach((item: any) => {
       (item.key != "comment") &&
-      inputValid(inputs[item.key], item.key, setInputErrors)
+      inputValid(inputsScheme[item.key], item.key, setInputErrors)
     });
   }
 

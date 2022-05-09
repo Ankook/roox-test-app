@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./input.module.scss";
+import cx from "classnames";
 
 interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -8,9 +9,10 @@ interface InputProps {
   defaultValue: string;
   editMode: boolean;
   name: string;
+  className: any
 }
 const Input :React.FC<InputProps>  = ({
-  label, defaultValue, editMode, name, type
+  label, defaultValue, editMode, name, type, className
 }) => {
   if (type == "textarea") {
     return (
@@ -25,7 +27,7 @@ const Input :React.FC<InputProps>  = ({
     return (
       <div className={styles.inputComponentContainer}>
         <div className={styles.fakeLabel}>{label}</div>
-        <div className={styles.inputContainer}>
+        <div className={cx(styles.inputContainer, styles.red)}>
           <input className={styles.input}
             disabled={!editMode}
             type="text"

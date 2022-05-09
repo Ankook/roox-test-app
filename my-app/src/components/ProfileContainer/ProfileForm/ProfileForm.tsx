@@ -1,4 +1,4 @@
-import React, { FC , useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import styles from "./profileForm.module.scss";
 import Input from "../../Ui-kit/Input/Input";
 import { Button } from '../../Ui-kit/button/Button';
@@ -20,7 +20,7 @@ export interface ProfileInputsState {
 type ProfileInputStateValues = ProfileInputsState[keyof ProfileInputsState];
 
 
-export interface ProfileInputErrorsState  {
+export interface ProfileInputErrorsState {
   name: string;
   username: string;
   email: string,
@@ -32,24 +32,24 @@ export interface ProfileInputErrorsState  {
 }
 
 
-interface ProfileFormProps  {
+interface ProfileFormProps {
   data: IUser
 }
 
 
 
-const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
+const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
   console.log("Пропсы компоненты ProfileForm");
   console.log(data);
   const editMode = useAppSelector(state => state.editMode.editMode);
 
 
-  const inputValid = (inputScheme: InputValues , nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
+  const inputValid = (inputScheme: InputValues, nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
     !inputScheme ?
       setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' })) :
       setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: '' }))
   }
-  
+
   const [inputErrors, setInputErrors] = useState<ProfileInputErrorsState>({
     name: '',
     username: '',
@@ -62,7 +62,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   })
 
 
-  
+
 
   const [inputs, setInputs] = useState<ProfileInputsState>({
     name: data.name,
@@ -74,7 +74,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
     phone: data.phone,
     website: data.website,
     textarea: "",
-  }); 
+  });
 
   const handleOnChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
@@ -88,15 +88,15 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
     event.preventDefault();
 
 
-  
+
     inputsScheme.forEach((item: any) => {
       (item.key != "comment") &&
-      inputValid(inputsScheme[item.key], item.key, setInputErrors)
+        inputValid(inputsScheme[item.key], item.key, setInputErrors)
     });
   }
 
-  
-  
+
+
   interface InputValues {
     label: string;
     type: string;
@@ -104,7 +104,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
     key: string;
   }
 
-  const inputsScheme: Array<InputValues>  = [
+  const inputsScheme: Array<InputValues> = [
     {
       label: 'Name',
       type: 'text',
@@ -163,25 +163,25 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-    <div className={styles.profileContent}>
-      {data && (
-        <>
-          <div className={styles.fillArea}>
-            <ul className={styles.formList}>
-            {inputsScheme.map((item: InputValues) => {
-              return (
-                <li key={item.key} className={styles.formItem} >
-                  <Input type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[item.key as keyof ProfileInputsState]} editMode={editMode}/>
-                </li>
-              )
-          })}
-        </ul>
-      </div>
-      <div className={styles.submitArea}>
-            <Button text='Отправить' disabled={editMode} theme={editMode ? Themes.salad : Themes.grey}/>
-          </div>
-      </>
-      )}
+      <div className={styles.profileContent}>
+        {data && (
+          <>
+            <div className={styles.fillArea}>
+              <ul className={styles.formList}>
+                {inputsScheme.map((item: InputValues) => {
+                  return (
+                    <li key={item.key} className={styles.formItem} >
+                      <Input className={inputErrors[item.key as keyof ProfileInputErrorsState] == 'true'? styles.red : styles.blue} type={item.type} label={item.label} name={item.label} onChange={handleOnChange} defaultValue={inputs[item.key as keyof ProfileInputsState]} editMode={editMode} />
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+            <div className={styles.submitArea}>
+              <Button text='Отправить' disabled={editMode} theme={editMode ? Themes.salad : Themes.grey} />
+            </div>
+          </>
+        )}
       </div>
     </form>
   );

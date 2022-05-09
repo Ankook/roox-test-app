@@ -21,6 +21,14 @@
   width: 100%;
   box-sizing: border-box;
 
+  &.red  {
+    border: 1px solid red;
+  }
+
+  &.blue {
+    border: 1px solid blue;
+  }
+
   input {
     background: white;
     border: none;

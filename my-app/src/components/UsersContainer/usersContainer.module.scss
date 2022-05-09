@@ -9,6 +9,8 @@
   box-sizing: border-box;
 
   .header {
+    margin: 0;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: row;
     align-self: flex-start;

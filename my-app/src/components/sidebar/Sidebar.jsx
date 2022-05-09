@@ -19,7 +19,7 @@ const Sidebar = (props) => {
 
   return (
     <div className={styles.sidebar}>
-      <span className={styles.sortTitle}>Cортировка</span>
+      <span className={styles.sortTitle}>Сортировка</span>
       <Button onClick={handleClick} text="по городу" theme={Themes.eggPlant} />
       <Button
         onClick={handleClick}

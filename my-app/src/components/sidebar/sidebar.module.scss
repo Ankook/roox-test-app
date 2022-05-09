@@ -1,19 +1,18 @@
-.sidebar  {
+.sidebar {
   display: flex;
   flex-direction: column;
-  background: #BDBDBD;
+  background: #bdbdbd;
   width: 150px;
-  height: 1028px;
+  height: 1050px;
   box-sizing: border-box;
   padding: 35px 0px 0px 20px;
   align-self: start;
 
-  .sortTitle  {
-    width:fit-content
+  .sortTitle {
+    width: fit-content;
   }
 }
 
 .sidebar > *:not(:last-child) {
   margin-bottom: 10px;
 }
-

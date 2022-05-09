@@ -1,5 +1,5 @@
 .user {
-  background: #F3F3F3;
+  background: #f3f3f3;
   border-radius: 8px;
   width: 420px;
   height: 73px;
@@ -8,14 +8,13 @@
   box-sizing: border-box;
 }
 
-.userContent  {
+.userContent {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 100%;
   width: 100%;
 }
-
 
 .userData {
   display: flex;
@@ -27,13 +26,13 @@
   height: 100%;
   width: 100%;
 
-  .title  {
-    color:#A3A3A3;
+  .title {
+    color: #a3a3a3;
     margin-right: 7px;
   }
 
-  .value  {
-    color: black
+  .value {
+    color: black;
   }
 }
 
@@ -41,9 +40,9 @@
   display: flex;
   align-items: flex-end;
   font-size: 12px;
-  
-  .navLink  {
+
+  .navLink {
     text-decoration: none;
-    color: #4B51EF;
+    color: #4b51ef;
   }
 }

@@ -116,7 +116,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   ];
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
     <div className={styles.profileContent}>
       {data && (
         <>

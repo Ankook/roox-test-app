@@ -3,7 +3,7 @@ import styles from "./input.module.scss";
 import cx from "classnames";
 
 interface InputProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: any) => void  
   type: string
   label: string;
   defaultValue: string;
@@ -12,7 +12,7 @@ interface InputProps {
   className: any
 }
 const Input :React.FC<InputProps>  = ({
-  label, defaultValue, editMode, name, type, className
+  label, defaultValue, editMode, name, type, className, onChange
 }) => {
   console.log(className);
   if (type == "textarea") {
@@ -20,7 +20,7 @@ const Input :React.FC<InputProps>  = ({
       <div className={styles.textAreaComponentContainer}>
         <div className={styles.fakeLabel}>{label}</div>
         <div className={styles.textareaContainer}>
-          <textarea className={styles.textarea} disabled={!editMode} rows={3}></textarea>
+          <textarea className={styles.textarea} onChange={onChange}  disabled={!editMode} rows={3}></textarea>
         </div>
       </div>
     )
@@ -30,6 +30,7 @@ const Input :React.FC<InputProps>  = ({
         <div className={styles.fakeLabel}>{label}</div>
         <div className={cx(styles.inputContainer, className == "red" ? styles.red: styles.blue)}>
           <input className={styles.input}
+            onChange={onChange}
             disabled={!editMode}
             type="text"
             name={name} defaultValue={defaultValue} />

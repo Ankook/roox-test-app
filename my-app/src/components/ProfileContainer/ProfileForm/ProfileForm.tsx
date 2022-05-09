@@ -84,12 +84,10 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
   const HandleOnChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
     console.log(value);
-    useEffect(() => {
       setInputs({
         ...inputs,
         [evt.target.name]: value
       });
-    }, [])
     console.log(inputs.username);
   }
 

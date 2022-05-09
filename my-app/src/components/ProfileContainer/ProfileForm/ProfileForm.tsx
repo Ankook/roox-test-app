@@ -17,6 +17,8 @@ export interface ProfileInputsState {
   website: string,
   textarea: string
 }
+type ProfileInputStateValues = ProfileInputsState[keyof ProfileInputsState];
+
 
 export interface ProfileInputErrorsState  {
   name: string;
@@ -28,6 +30,7 @@ export interface ProfileInputErrorsState  {
   phone: string,
   website: string
 }
+
 
 interface ProfileFormProps  {
   data: IUser
@@ -59,7 +62,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   })
 
 
-  type ProfileInputStateValues = ProfileInputsState[keyof ProfileInputsState];
+  
 
   const [inputs, setInputs] = useState<ProfileInputsState>({
     name: data.name,
@@ -78,6 +81,17 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
     setInputs({
       ...inputs,
       [evt.target.name]: value
+    });
+  }
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+
+  
+    inputs.forEach((item: any) => {
+      (item.key != "comment") &&
+      inputValid(inputs[item.key], item.key, setInputErrors)
     });
   }
 
@@ -148,7 +162,7 @@ const ProfileForm:React.FC<ProfileFormProps> = ({ data }) => {
   ];
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
     <div className={styles.profileContent}>
       {data && (
         <>

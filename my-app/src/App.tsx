@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { getUsers } from "../src/features/users/usersSlice";
 import { useAppDispatch } from "./app/hooks";
-import logo from "./logo.svg";
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/sidebar/Sidebar";

@@ -1,5 +1,4 @@
-import React, { FC } from "react";
-import { types } from "sass";
+import  { FC } from "react";
 import styles from "./user.module.scss";
 import { NavLink } from "react-router-dom";
 

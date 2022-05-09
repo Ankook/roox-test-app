@@ -11,19 +11,18 @@ const UsersContainer: React.FC = () => {
   console.log("usersFromRedux");
   console.log(users);
   const sortType = useAppSelector((state) => state.sort.sortType);
-  const error = useAppSelector((state) => state.users.error);
   const isLoad = useAppSelector((state) => state.users.isLoad);
   const [sortedUsers, setSortedUsers] = useState<Array<IUser>>([]);
   const [usersCount, setUsersCount] = useState(0);
 
   const sortByType = (sortType: string, usersForSort: Array<IUser>): any => {
-    if (sortType == "city") {
+    if (sortType === "city") {
       setSortedUsers(usersForSort.sort(sortByCity));
       console.log(usersForSort);
-    } else if (sortType == "company") {
+    } else if (sortType === "company") {
       setSortedUsers(usersForSort.sort(sortByCompanyName));
       console.log(usersForSort);
-    } else if (sortType == "none") {
+    } else if (sortType === "none") {
       setSortedUsers(usersForSort);
     }
   };

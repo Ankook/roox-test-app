@@ -20,7 +20,7 @@ const Button: React.FC<Props> = ({
   theme,
   className,
   name,
-  disabled
+  disabled,
 }: Props) => {
   const getTheme = () => {
     if (theme === Themes.eggPlant) {
@@ -34,7 +34,7 @@ const Button: React.FC<Props> = ({
     }
     return;
   };
-  
+
   return (
     <button
       className={cx(styles.customButton, getTheme(), className)}
@@ -48,4 +48,3 @@ const Button: React.FC<Props> = ({
 };
 
 export { Button };
-

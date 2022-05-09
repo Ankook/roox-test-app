@@ -1,0 +1,19 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "prettier"
+  ],
+  "parserOptions": {
+    
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "@typescript-eslint/rule-name": "error"
+  }
+}

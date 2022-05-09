@@ -1,3 +1,3 @@
-export interface EditModeState  {
-  editMode: boolean
+export interface EditModeState {
+  editMode: boolean;
 }

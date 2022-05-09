@@ -1,4 +1,3 @@
-
 export interface SortConfigState {
-  sortType: "none" | "city" | "company"
+  sortType: "none" | "city" | "company";
 }

@@ -47,13 +47,18 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
   const editMode = useAppSelector(state => state.editMode.editMode);
   console.log(editMode);
 
+  const [isFormValid, setFormValid] = useState(true);
+
 
   const inputValid = (inputValue: any, nameInput: keyof ProfileInputErrorsState, setInputErrors: React.Dispatch<React.SetStateAction<ProfileInputErrorsState>>) => {
-    console.log(inputValue);
-    console.log(!inputValue);
     {
-      !inputValue ?
-      setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' })) :
+      !inputValue
+        ? 
+          [setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: 'true' })),
+          setFormValid(false)
+          ]
+        
+      :
       setInputErrors((prev: ProfileInputErrorsState) => ({ ...prev, [nameInput]: '' }))
     }
   }
@@ -93,8 +98,13 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
       (item.key != "comment") &&
         inputValid(inputs[item.key as keyof ProfileInputsState], item.key, setInputErrors)
     });
-  }
 
+    if (isFormValid)  {
+      
+    } 
+
+    
+  }
 
 
   interface InputValues {

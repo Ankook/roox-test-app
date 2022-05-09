@@ -39,8 +39,11 @@ interface ProfileFormProps {
 
 
 const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
+
+  const profileData = { ...data };
+
   console.log("Пропсы компоненты ProfileForm");
-  console.log(data);
+  console.log(profileData);
   const editMode = useAppSelector(state => state.editMode.editMode);
   console.log(editMode);
 
@@ -70,14 +73,14 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
 
 
   const [inputs, setInputs] = useState<ProfileInputsState>({
-    name: data.name,
-    username: data.username,
-    email: data.email,
-    street: data.address.street,
-    city: data.address.city,
-    zipcode: data.address.zipcode,
-    phone: data.phone,
-    website: data.website,
+    name: profileData.name,
+    username: profileData.username,
+    email: profileData.email,
+    street: profileData.address.street,
+    city: profileData.address.city,
+    zipcode: profileData.address.zipcode,
+    phone: profileData.phone,
+    website: profileData.website,
     textarea: "",
   });
 
@@ -170,7 +173,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ data }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.profileContent}>
-        {data && (
+        {profileData && (
           <>
             <div className={styles.fillArea}>
               <ul className={styles.formList}>

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./profileForm.module.scss";
 import Input from "../../Ui-kit/Input/Input";
 import { Button } from "../../Ui-kit/button/Button";
